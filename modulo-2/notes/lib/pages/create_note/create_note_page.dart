@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:notes/app_bar_widget.dart';
+import 'package:notes/pages/create_note/widgets/button_save_widget.dart';
+import 'package:notes/pages/create_note/widgets/input_note_widget.dart';
 
 class CreateNotePage extends StatefulWidget {
   @override
@@ -27,16 +30,14 @@ class _CreateNotePageState extends State<CreateNotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(isEdit ? "Edit Note" : "Create Note"),
-          centerTitle: true,
+        appBar: AppBarWidget(
+          title: isEdit ? "Edit Page" : "Create Page",
           actions: [
-            if (isEdit)
-              IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    Navigator.pop(context, "");
-                  })
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context, "");
+                },
+                icon: Icon(Icons.delete)),
           ],
         ),
         body: Padding(
@@ -44,14 +45,12 @@ class _CreateNotePageState extends State<CreateNotePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                controller: textController,
-                maxLines: null,
+              InputNoteWidget(
+                textController: textController,
                 onChanged: (value) {
                   description = value;
                   setState(() {});
                 },
-                decoration: InputDecoration(labelText: "Descrição"),
               ),
               SizedBox(
                 height: 32,
@@ -62,11 +61,11 @@ class _CreateNotePageState extends State<CreateNotePage> {
                   children: [
                     SizedBox(
                         width: 250,
-                        child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context, description);
-                            },
-                            child: Text("Salvar")))
+                        child: ButtonSaveWidget(
+                          onPressed: () {
+                            Navigator.pop(context, description);
+                          },
+                        ))
                   ],
                 )
             ],
