@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gerencia_de_estado/gerencia_de_estado.dart';
+import 'package:gerencia_de_estado/home_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,11 +29,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late GerenciaDeEstado<int> controller;
+  final controller = HomeController();
 
   @override
   void initState() {
-    controller = GerenciaDeEstado<int>(initialState: 0);
     controller.listen((state) {
       setState(() {});
     });
@@ -49,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print("BUILDOU O SCAFFOD");
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

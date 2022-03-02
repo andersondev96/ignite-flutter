@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, prefer_final_fields, unnecessary_this
-abstract class GerenciaDeEstado<T> {
+class GerenciaDeEstado<T> {
   late T _state;
   var _listens = <Function(T state)>[];
   GerenciaDeEstado({required T initialState}) {
