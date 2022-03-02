@@ -14,6 +14,9 @@ void main() {
       expect(controller.state, "alterado");
     });
     controller.setState("alterado");
-    expect(controller.state, "alterado");
+    controller.listen((state) {
+      expect(controller.state, "alterado2");
+    });
+    controller.setState("alterado2");
   });
 }
