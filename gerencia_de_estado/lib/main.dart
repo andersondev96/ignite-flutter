@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerencia_de_estado/count_widget.dart';
 import 'package:gerencia_de_estado/gerencia_de_estado.dart';
 import 'package:gerencia_de_estado/home_controller.dart';
 
@@ -31,14 +32,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final controller = HomeController();
 
-  @override
-  void initState() {
-    controller.listen((state) {
-      setState(() {});
-    });
-    super.initState();
-  }
-
   int _counter = 0;
 
   void _incrementCounter() {
@@ -61,9 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '${controller.state}',
-              style: Theme.of(context).textTheme.headline4,
+            CountWidget(
+              controller: controller,
             ),
           ],
         ),
