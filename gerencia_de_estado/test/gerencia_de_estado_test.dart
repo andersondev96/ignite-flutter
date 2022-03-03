@@ -5,11 +5,11 @@ void main() {
   late GerenciaDeEstado controller;
 
   setUp(() {
-    controller = GerenciaDeEstado();
+    controller = GerenciaDeEstado<String>(initialState: "");
   });
 
   test("Testando a gerência de estado", () {
-    expect(controller.state, isNull);
+    expect(controller.state, "");
     controller.listen((state) {
       expect(controller.state, "alterado");
     });
